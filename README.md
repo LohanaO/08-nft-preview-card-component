@@ -42,27 +42,45 @@ El contenido de la tarjeta de código QR se estructuró utilizando elementos HTM
 ```
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="shortcut icon" href="images/favicon-32x32.png" type="image/.png">
-    <title>QR Code Component.Frontend Club</title>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/favicon-32x32.png" type="image/png">
+    <title> NFT Preview Card Component - Frontend Club</title>
+</head>
+<body>
     <main class="container">
-      <article class="card">
-        <img src="images/image-qr-code.png" alt="QR Code" />
-        <h3>Improve your front-end skills by building projects</h3>
-        <p>
-          Scan the QR code to visit Frontend Mentor and take your coding skills
-          to the next level
-        </p>
-      </article>
-    </main>
-  </body>
-</html>
+        <article class="card">
+            <div class="image-container">
+            <img class="image-eq" src="images/image-equilibrium.jpg" alt="img equilibrium">
+            <div class="overlay">
+                <img src="images/icon-view.svg" alt="icon-view">
+            </div>
+        </div>
+            <h2>Equilibrium #3429</h2>
+            <p class="description">Our Equilibrium collection promotes balance and calm.</p>
+            <div class="content">
+            <div class="price">
+                <img src="images/icon-ethereum.svg" alt="icon-ethereum">
+                <p>0.041 ETH</p>
+            </div>
+            <div class="time">
+                <img src="images/icon-clock.svg" alt="icon-clock">
+                <p>3 days left</p>
+            </div>
+        </div>
+            <div class="footer">
+                <img src="images/image-avatar.png" alt="image-avatar">
+                <p>Creation of <span>Jules Wyvern</span></p>
+            </div>
 
+        </article>
+
+    </main>
+    
+</body>
+</html>
 ```
 
 
@@ -70,85 +88,170 @@ Para lograr el diseño deseado de la tarjeta de producto, sigue estos pasos:
 
 ### Definir estilos básicos para el contenedor y la tarjeta:
 #### El contenedor debe tener un estilo para centrar su contenido verticalmente y horizontalmente. Puedes lograr esto use display: flex, justify-content: center y align-items: center.
-#### La tarjeta debe tener un fondo blanco y algún relleno para separar su contenido del borde. Aplique background-color: white y padding.
-#### Use los siguientes estilos CSS le di un ancho maximo a la tarjeta para evitar usar medias queries y una pequeña animación que hace que la card aparezca al cargar la pagina.
+#### Use los siguientes estilos CSS le di un ancho maximo a la tarjeta para evitar usar medias queries e a la imagen le aplique un efecto overlay al hacer hover en la imagen.
 ```
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-:root{
---White: hsl(0, 0%, 100%);
---Light-gray: hsl(212, 45%, 89%);
---Grayish-blue: hsl(220, 15%, 55%);
---Dark-blue: hsl(218, 44%, 22%);
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+:root {
+  /* Colors primary */
+  --Soft-blue: hsl(215, 51%, 70%);
+  --Cyan: hsl(178, 100%, 50%);
 
+  /* Neutral */
+  --Very-dark-blue1: hsl(217, 54%, 11%);
+  --Very-dark-blue2: hsl(216, 50%, 16%);
+  --Very-dark-blue3: hsl(215, 32%, 27%);
+  --White: hsl(0, 0%, 100%);
+}
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background-color: var(--Very-dark-blue1);
+  font-size: 18px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 100vh;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--Very-dark-blue2);
+  border-radius: 20px;
+  max-width: 350px;
+  padding: 20px;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
 
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+.image-eq {
+  width: 100%;
+  border-radius: 10px;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 98%;
+  border-radius: 10px;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,255,247,0.5);
+  transition: all 1s ease-in-out;
 }
 
-body{
-    font-family: 'Outfit', sans-serif;
-    background-color: var(--Light-gray);
+.image-container:hover .overlay {
+  cursor: pointer;
+  opacity: 1;
+}
+.overlay > img {
+  width: 50px;
+  height: auto;
+  
 }
 
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+h2 {
+  width: 100%;
+  color: var(--White);
+  margin: 20px 0;
+  text-align: start;
+  transition: all 1s ease-in-out;
 }
 
-.card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--White);
-    max-width: 320px;
-    padding: 20px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
-    animation: fadeIn 2s ease-in-out;
+h2:hover {
+  color: var(--Cyan);
+  cursor: pointer;
 }
 
-.card img{
-    width: 100%;
-    border-radius: 10px;
+.description {
+  color: var(--Soft-blue);
+  text-align: start;
+  line-height: 1.5;
 }
 
-.card h3{
-    font-size: 22px;
-    font-weight: 700;
-    margin: 20px 0;
-    width: 90%;
-    color: var(--Dark-blue);
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: solid 1px var(--Very-dark-blue3);
+}
+.price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
 }
 
-.card p{
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--Grayish-blue);
-    width: 80%;
-    margin-bottom: 20px;
+.price p {
+  color: var(--Cyan);
 }
 
-@keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+.time {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.time p {
+  color: var(--Soft-blue);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.footer img {
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--White);
+}
+
+.footer p {
+  color: var(--Soft-blue);
+}
+
+.footer span {
+  color: var(--White);
+  transition: all 1s ease-in-out;
+}
+
+.footer span:hover {
+  color: var(--Cyan);
+  cursor: pointer;
+}
+
 
  ```
 
 ## Conclusiones
-En conclusión, la creación de esta tarjeta  fue un ejercicio interesante para practicar mis habilidades en HTML y CSS. Espero que este README te haya proporcionado una buena comprensión del proyecto y de mi proceso de desarrollo.
+En conclusión, la creación de esta tarjeta  fue un ejercicio interesante para practicar mis habilidades en HTML y CSS sobre todo overlay a la imagen. Espero que este README te haya proporcionado una buena comprensión del proyecto y de mi proceso de desarrollo.
 
 ¡Gracias por revisar mi proyecto!
 
