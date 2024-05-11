@@ -34,10 +34,9 @@ Bonus: Agrega un archivo readme.md al proyecto.
 
 ## Solución
 ### Resolución con HTML y CSS
-En este proyecto, utilicé HTML y CSS para crear una tarjeta de codigo QR que muestra una imagen con un código Qr, un titulo y una descripción.
 
 ### Estructura HTML
-El contenido de la tarjeta de código QR se estructuró utilizando elementos HTML semánticos para mejorar la accesibilidad y el SEO del sitio web. A continuación se muestra una vista general de la estructura HTML utilizada:
+El contenido de la tarjeta se estructuró utilizando elementos HTML semánticos para mejorar la accesibilidad y el SEO del sitio web. A continuación se muestra una vista general de la estructura HTML utilizada:
 
 ```
 <!DOCTYPE html>
